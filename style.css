@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: monospace;
+  padding: 20px;
+}
+.text-container {
+  font-size: 1.2em;
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Hides overflow text during animation */
+  width: fit-content; /* Only takes up as much space as needed */
+}
+.typing-text {
+  display: inline-block;
+  animation: typing 3s steps(24, end) forwards;
+  position: relative;
+  padding-right: 1px; /* Space for cursor */
+}
+.typing-text::after {
+  content: ""; /* Empty content  */
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px; /*width of new tag area*/
+  height: 100%;
+  background-color: black; /* Cursor color */
+  animation: blink 1s step-end infinite; /* Blinking cursor animation */
+}
+/* Typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 24ch;
+  }
+}
+/* Blinking cursor effect */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.rotating-text {
+  animation: rotateText 3s linear infinite;
+  position: relative;
+  display: inline-block;
+  transform-origin: center;
+  margin-top: 120px;
+  padding-right: 100px;
+}
+@keyframes rotateText {
+  from {
+    transform: rotate(0deg) translateX(120px);
+  }
+  to {
+    transform: rotate(360deg) translateX(120px);
+  }
+}
+.skew-text {
+  border: 1px solid red;
+  /* transition: transform 0.2s ease-in; */
+  margin-top: 120px;
+  max-width: 300px;
+}
+.skew-text:hover {
+  transform: skew(20deg, 20deg);
+}
+.box {
+  height: 100px;
+  width: 100px;
+  background-color: bisque;
+  margin: 5px;
+}
+.to-circle {
+  height: 100px;
+  width: 100px;
+  background-color: bisque;
+  margin: 5px;
+  animation: toCircle 1s ease-in infinite alternate;
+}
+@keyframes toCircle {
+  from {
+    border-radius: 0;
+  }
+  to {
+    border-radius: 50%;
+  }
+}
+.transition-box:hover {
+  border: 20px solid brown;
+}
+.transition-box {
+  transition: border 2s ease-in-out;
+}
+.list-transition {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.list-transition li {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 5px;
+  cursor: pointer;
+  max-width: 300px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Apply transitions */
+}
+
+.list-transition li:nth-child(odd):hover {
+  background-color: #4caf50; /* Change background color on focus */
+  color: white; /* Change text color */
+  transform: scale(1.1); /* Slightly scale up */
+}
+.list-transition li:nth-child(even):hover {
+  background-color: red; /* Change background color on focus */
+  color: white; /* Change text color */
+  transform: scale(1.1); /* Slightly scale up */
+  transform: rotateY(45deg);
+}
